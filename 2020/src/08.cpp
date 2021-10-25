@@ -1,6 +1,8 @@
 #include "common.h"
 #include "fileio.h"
 
+#include <tuple>
+
 struct instruction
 {
 	char op;	//a=acc, j=jmp, n=nop

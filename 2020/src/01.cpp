@@ -1,11 +1,10 @@
 #include "common.h"
 #include "fileio.h"
 
-/*Algorithm: Each number from the input is stored as part of bitset. This gives linear time to sort the numbers.
-Then the sequence of numbers is inserted in linked list represented with array. This allows iteration over the
-elements only.
+/*Algorithm: Each number from the input is stored as index in bitset. This gives O(n) time to sort the numbers.
+For easier iteration over the elements all numbers are inserted in linked list represented with array.
 To find the third number for part2 look for the difference 2020-(first+second). If first+second>2020 then third
-number doesn't exist for the pair {first,second}.*/
+number doesn't exist for this pair*/
 output day01(const char* input, size_t bytes)
 {
 	long long part1=0, part2=0;

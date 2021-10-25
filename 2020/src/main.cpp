@@ -5,7 +5,7 @@
 #include <iomanip>
 
 
-static const char* LoadFile(const char* pszFileName, size_t& bytes)
+static const char* LoadInput(const char* pszFileName, size_t& bytes)
 {
 	FILE* file = fopen(pszFileName, "rb");
 	bytes = 0;
@@ -43,6 +43,11 @@ static const char* LoadFile(const char* pszFileName, size_t& bytes)
 	}
 }
 
+static void FreeInput(const char* input)
+{
+	delete [] input;
+}
+
 
 int main()
 {
@@ -64,7 +69,7 @@ int main()
 	for (unsigned idx=0; idx<sizeof(days)/sizeof(*days); ++idx)
 	{
 		sprintf(filename, "%02d.txt", idx+1);
-		if (const char* input = LoadFile(filename, /*out*/bytes))
+		if (const char* input = LoadInput(filename, /*out*/bytes))
 		{
 			start = std::chrono::steady_clock::now();
 			output result = days[idx](input, bytes);
@@ -74,11 +79,11 @@ int main()
 			std::cout << "Day " << std::right << std::setfill('0') << std::setw(2) << idx+1
 			          << std::setfill(' ') << std::setw(8) << std::chrono::duration_cast<std::chrono::microseconds>(span).count() << " us"
 			          << "   " << std::left << std::setw(15) << result.part1 << " " << std::setw(20) << result.part2 << " " << std::endl;
-			delete [] input;
+			FreeInput(input);
 		}
 	}
 	std::cout << "===============================================" << std::endl
-	          << "Total:  " << std::chrono::duration_cast<std::chrono::microseconds>(total).count() << " us" << std::endl
+	          << "Total:" << std::right << std::setw(8) << std::chrono::duration_cast<std::chrono::microseconds>(total).count() << " us\n"
 	          << "Press ENTER to exit...";
 	std::cin.get();
 	return 0;

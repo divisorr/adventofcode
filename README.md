@@ -18,11 +18,10 @@ All timings are in microseconds.
 
 ## Requirements
 
-Compiler support for C++20 features such as std\::popcount, std\::countr_zero is required.
-I used these compilers: GCC 10.2, MSVC v143, Clang 12.0.0
+Compiler support for C++20 features such as std::popcount, std::countr_zero is required. I used these compilers: GCC 10.2, MSVC v143, Clang 12.0.0
 
 ## Usage
 
-- The solutions should work with any input, provided it is unmodified and with LF endings.
+The solutions should work with any input, provided it is unmodified and with LF line endings.
 - If you are using Visual Studio with the provided .sln file compile and run.
-- If you are using CMake place the compiled executable in the same directory as the input files.
+- If you are using CMake generate the makefile, compile, and place the compiled executable in the same directory as the input files.
