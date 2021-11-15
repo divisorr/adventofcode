@@ -6,7 +6,7 @@ inline unsigned solve(unsigned from, unsigned to, unsigned* seen, uint64_t* cach
 	unsigned addr = 0;
 	for (unsigned idx=from; idx<to; ++idx)
 	{
-		if (cache[current/64] & ((uint64_t)1<<current))
+		if (cache[current/64] & ((uint64_t)1<<(current&63)))
 		{
 			addr = current;
 			current = idx-seen[addr];
@@ -14,7 +14,7 @@ inline unsigned solve(unsigned from, unsigned to, unsigned* seen, uint64_t* cach
 		}
 		else
 		{
-			cache[current/64] |= (uint64_t)1<<current;
+			cache[current/64] |= (uint64_t)1<<(current&63);
 			seen[current] = idx;
 			current = 0;
 		}

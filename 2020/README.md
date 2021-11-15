@@ -119,7 +119,7 @@ There's no need of general grammar processors like Packrat or CYK. Instead use t
 - Represent each side as 10 digit number. Cache pairs {side,tile} to enable fast retrieval of tile when matching a side.
 - Represent the 8x8 core of each tile as 64-bit number. This enables very fast transformations(mirror vertically and horizontally, main diagonal flip, rotation) on the core using SWAR-wise delta swaps.
 - For part 1 start with the first tile from the input and find the tile in the upper-left corner. From there match all other sides.
-- For part 2 use the fast transformations on each tile's core to mirror horizontally, mirror, or rotate. Each 8-bits of a core of one tile are part of 96-bit long row.
+- For part 2 use the fast transformations on each tile's core to mirror horizontally, flip, or rotate. Each 8-bits of a core of one tile are part of 96-bit long row.
   Represent this row as two numbers with 64 and 51 bits and search for the biggest part of the sea monster inside.
 
 ### Day 21
